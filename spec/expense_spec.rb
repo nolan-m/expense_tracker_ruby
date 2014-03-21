@@ -31,4 +31,19 @@ describe Expense do
       test_expense1.should eq test_expense2
     end
   end
+
+  describe 'expense_category_save' do
+    it 'saves the expense_id and category_id to a join table' do
+      test_expense = Expense.new(burger_hash)
+      test_expense.save
+      test_category = Category.new({:name => 'Fast Food'})
+      test_category.save
+      test_expense.expense_category_save(test_category)
+
+
+
+    end
+  end
+
+
 end

@@ -31,4 +31,6 @@ class Expense
     results = DB.exec("INSERT INTO expense (name, cost, date) VALUES ('#{@name}', #{@cost}, '#{@date}') RETURNING id;")
     @id = results.first['id'].to_i
   end
+
+
 end

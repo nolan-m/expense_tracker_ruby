@@ -1,6 +1,6 @@
 require 'pg'
 require './lib/expense'
-require './lib/catagory'
+require './lib/category'
 
 DB = PG.connect({:dbname => 'expense_organizer'})
 
@@ -33,7 +33,12 @@ def add_expense
   expense_hash[:cost] = gets.chomp.to_f
   puts "Enter expense date (YYYY-MM-DD):"
   expense_hash[:date] = gets.chomp
+  puts "Enter a category for this purchase:"
+  category = gets.chomp
 
+
+  new_category = Category.new({:name => category})
+  new_category.save
   new_expense = Expense.new(expense_hash)
   new_expense.save
 
